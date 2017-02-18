@@ -12,9 +12,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pocetna');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/pocetna', function () {
+	return view('dashboard');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+Route::get('/novi-klijent', function () {
+    return view('novi-klijent');
+});
+
+
+Route::get('/lista-korisnika', function () {
+    $listaUsera = \App\User::orderBy('created_at', 'asc')->get();
+    return view('lista-korisnika', [
+        'users' => $listaUsera,
+    ]);
+});
