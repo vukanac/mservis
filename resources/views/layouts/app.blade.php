@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MService') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -24,7 +24,9 @@
     <div id="app">
         @include('layouts.nav-top')
 
-        @yield('content')
+        <div class="row">
+          @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
