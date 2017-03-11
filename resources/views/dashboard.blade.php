@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ config('app.locale') }}">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <title>{{ config('app.name', 'MService') }}</title>
+
+
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="SaaS for Mechanics">
         <meta name="author" content="Gorana Vukanac">
         <link rel="icon" href="http://getbootstrap.com/favicon.ico">
-
-        <title>MServis</title>
 
         <!-- CSS And JavaScript -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -46,10 +51,22 @@
         <![endif]-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
-    </head>
 
 
+
+        <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script>
+            window.Laravel = {!! json_encode([
+                'csrfToken' => csrf_token(),
+            ]) !!};
+        </script>
+  </head>
+  <body>
     @include('layouts.nav')
+    
     <div class="container-fluid">
       <div class="row">
         <!-- leva navigacija - pocetak -->
@@ -60,9 +77,11 @@
         </div>
         <!-- leva navigacija - kraj -->
 
+        <!-- desno - glavni sadrzaj = content -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <!-- desno - glavni sadrzaj = content -->
+
           @yield('content')
+
         </div>
       </div>
     </div>
@@ -77,4 +96,9 @@
     <script src="/assets/holder.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/assets/ie10-viewport-bug-workaround.js"></script>
-</body></html>
+
+
+
+</body>
+</html>
+
