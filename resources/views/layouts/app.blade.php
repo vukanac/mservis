@@ -24,9 +24,29 @@
     <div id="app">
         @include('layouts.nav-top')
 
-        <div class="row">
-          @yield('content')
+        <div class="container-fluid">
+          <div class="row">
+            <!-- leva navigacija - pocetak -->
+            <div class="col-sm-3 col-md-2 sidebar">
+
+              @if (!Auth::guest())
+
+                @include('layouts.side-nav')
+
+              @endif
+
+            </div>
+            <!-- leva navigacija - kraj -->
+
+            <!-- desno - glavni sadrzaj = content -->
+            <div class="col-sm-9 col-md-10 main">
+
+              @yield('content')
+
+            </div>
+          </div>
         </div>
+
     </div>
 
     <!-- Scripts -->
